@@ -1,0 +1,100 @@
+.imgclass {
+    height : 100%;
+    background-image: url(../../assets/images/login.jpg);
+    background-repeat: no-repeat;
+    position: relative;
+    background-attachment: scroll;
+    background-size: 100% 100%;
+} 
+
+.bgclass {
+    height: 100%;
+}
+
+.textclass {
+    color: #ffffff;
+    text-align: center;
+}
+.logoclass {
+    /* margin-top: 40px; */
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.paraclass {
+    padding-top: 25px;    
+}
+.parastyle {
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: small;
+    color: #666668;
+}
+.parastyle1 {
+    text-align: center;
+    margin-top: 0px;
+    font-size: small;
+    color: #666668;
+}
+.welcomecls {
+    color: #00aeef;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 15px;    
+}
+
+input{
+    border-radius: 25px;
+    background-color:#e6e8ea;
+    width: 300px;
+}
+
+
+.buttoncss {
+    text-align: center; 
+    margin-top: 10px;
+}
+.signincss {
+    display : inline-block; 
+    margin-right:80px;
+    margin-left:140px;
+    color: #00aeef;
+    font-size: large;
+    border-bottom: #00aeef;
+}
+
+.signupss {
+    display: inline-block;
+    margin-left: 50px;
+    color: #00aeef;
+    font-size: large;
+}
+.textboxcss {
+    margin-bottom: 10px; 
+    margin-left: 150px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: .375rem .75rem;
+}
+input[type=text]:focus{
+    outline: 2px solid #00aeef;   
+  }
+
+.btncss {
+    border-radius:50px; 
+    width:100px;     
+    background-color: #27aae1;
+    border-color: #27aae1 ;
+}
+
+.margincss {
+    margin-top: 0px; 
+    margin-bottom: 0px;
+}
+
+.fontlargecss {
+    font-size: large;
+}
+.fontsmallcss {
+    font-size: small;
+    color:#ebe1e1d6
+}  

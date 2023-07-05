@@ -1,0 +1,46 @@
+<div class = "container-fluid bgclass">
+    <div class = "row bgclass">
+        <div class = "col-sm-6">
+            <h4 class = "welcomecls"><b>Welcome to DSNL</b></h4>
+            <p class = "parastyle">Our world-class services accelerate customer</p>
+            <p class = "parastyle" style="margin-top: 0px;">decision-making by breaking down communication</p>
+            <p class = "parastyle1" style="margin-bottom: 40px;">barriers,leading to enhanced operational efficiency</p>
+            <div >
+                <ul style="list-style-type: none; ">
+                    <li class = "signincss"><a ><b>Sign in</b></a></li>
+                    <li class = "signupss"><a><b>Sign up</b></a></li>    
+                </ul> 
+            </div>
+            <div >
+                <form [formGroup]="reactiveSinginForm" (ngSubmit) = "signInRequest()" >
+                    <div class="row" >
+                        <div class = "col" >
+                            <input type="text" class = "textboxcss" id ="uname" formControlName="username" placeholder="Registered Email ID">
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col">
+                            <input type="password" class = "textboxcss" id="pword" formControlName="password" placeholder="Password">
+                        </div>
+                    </div>
+                   <div class = "buttoncss">
+                        <button type="submit" class="btn btn-primary btncss" style="margin-right: 10px;">Sign in</button>
+                        <!-- <button type="button" class="btn btn-primary btncss" style="margin-left: 10px;">Cancel</button> -->
+                   </div> 
+                </form>
+            </div>
+        </div>
+        <div class = "col-sm-6 imgclass">
+            <div class = "textclass">
+                <img class = "logoclass" src="../../assets/images/dsnl-logo.png">
+                <p class = "fontlargecss" style = "margin-bottom: 0px; "><b>The comprehensive</b></p>
+                <p class = "margincss fontlargecss"><b>voice infrastructure platform</b></p>
+                <p class="paraclass fontsmallcss" style = "margin-bottom: 0px;">Through our innovatve voice infrastructure</p>
+                <p class = "margincss fontsmallcss" >platform,we deliver a range of products that</p>
+                <p class = "margincss fontsmallcss" >include Cloud PBX,Contact Center Software,</p>
+                <p class = "fontsmallcss" style = "margin-top: 0px;">Campaign Management,and Collaboration Tools</p>
+            </div>
+        </div>
+    </div>
+</div>
+

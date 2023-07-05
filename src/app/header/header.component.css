@@ -1,0 +1,20 @@
+.logo{
+    padding-left: 10px;
+}
+.fontcss {
+    font-family: sans-serif; 
+    font-style: normal; 
+    font-weight: normal; 
+    font-size: 12px;
+}
+
+.topnav {
+    overflow: hidden;
+}
+.topnav-right {
+    float: right;
+  }
+
+  .dropdown {
+    position: relative;
+  }
