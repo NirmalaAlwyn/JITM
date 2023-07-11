@@ -6,10 +6,12 @@ describe('PastvoicedropComponent', () => {
   let component: PastvoicedropComponent;
   let fixture: ComponentFixture<PastvoicedropComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [PastvoicedropComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ PastvoicedropComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(PastvoicedropComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

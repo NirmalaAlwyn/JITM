@@ -1,125 +1,42 @@
-<!-- 
-    <div class="container-fluid topnav" >
-        <a>hi</a>
-        <a>hello</a>
-        <div class="topnav-right">
-            
-        </div>
-    </div> -->
-      
-    
-    
-    
-    
-    
-    
-    <div class="container-fluid">
-        <!-- <div class = "row">
-            <div class="col-sm-3">
-                <img  src = "../../assets/images/dsnl-logo1.png">
-            </div>
-            <div class="col-sm-9">
-                Hi
-            </div>
-            
-        </div> -->
-        <nav class="navbar navbar-default ">
-            <div class="container-fluid" >
-                <div style ="overflow: hidden; width: 100%; border: 1px solid black;" class="row">
-                    <div class="col-2">
-                        <div class = "navbar-header" >
-                            <img src="../../assets/images/dsnl-logo1.png" style="margin-right: 23px; border-right:1px solid #3e3939; " >
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div>
-                            <ul class="nav navbar-nav" >
-                                <li  style = "padding-top:24px; ">
-                                    
-                                    <p class = "fontcss" style="text-align: left; margin-bottom:0px; margin-left: 0px;">Account Id: <span>{{userAccountId}}</span></p>
-                                    <p class = "fontcss" style="text-align: left;margin-top:0px; margin-left: 0px; ">Account Name: <span>{{userAccountName}}</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div style="float: right; padding: 10px;">
-                            <ul class="nav navbar-nav " >
-                                
-                                <!-- <li class="dropdown"> 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                        <span class="caret"> <img src="assets/images/user.png" /> </span>
-                                        <span class="caret" [title]="clientName"> Hi, {{clientName}} </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li> <a href="#"> Logout </a> </li>
-                                    </ul>
-                                </li> -->
-                                <select name="language" id="language">
-                                    <option value="javascript" disabled>JavaScript</option>
-                                    <option value="python">Python</option>
-                                    <option value="c++">C++</option>
-                                    <option value="java" selected>Java</option>
-                                  </select>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div style =" overflow: hidden;">
+
+<div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid" style="margin-bottom: -9px;padding-right: 0px;"  >
+            <div style ="overflow: hidden; width: 100%; border-bottom: 1px solid #60b8f2;" class="row">
+                <div class="col-2">
                     <div class = "navbar-header" >
                         <img src="../../assets/images/dsnl-logo1.png" style="margin-right: 23px; border-right:1px solid #3e3939; " >
                     </div>
+                </div>
+                <div class="col-7">
+                    <div>
                         <ul class="nav navbar-nav" >
-                            <li  style = "padding-top:24px; ">
-                                
+                            <li  style = "padding-top:24px; ">                                
                                 <p class = "fontcss" style="text-align: left; margin-bottom:0px; margin-left: 0px;">Account Id: <span>{{userAccountId}}</span></p>
                                 <p class = "fontcss" style="text-align: left;margin-top:0px; margin-left: 0px; ">Account Name: <span>{{userAccountName}}</span></p>
                             </li>
                         </ul>
-                        <div style="float: right;">
-                            <ul class="nav navbar-nav " >
-                                <li class="dropdown"> 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                        <span class="caret"> <img src="assets/images/user.png" /> </span>
-                                        <span class="caret" [title]="clientName"> Hi, {{clientName}} </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li> <a href="#"> Logout </a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
+                    </div>
                 </div>
-            </nav> 
-            
-            <!-- <nav class="navbar navbar-default " style="float:right;">
-                <div class="container-fluid" >
-                    <ul class="nav navbar-nav " >
-                        <li><a href="#">Page 1</a></li>
-                        
-                    </ul>
+                <div class="col-3">
+                    <div style="padding: 10px; position: absolute;right: 0;">
+                        <ul class="nav  " >                                  
+                            <div class="dropdown" >
+                                <a style = "text-decoration: none;" href="#" class="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"  type="button" aria-expanded="false" >
+                                    <span class="inline-show "> <img src="assets/images/user.png" /> </span>
+                                    <span class="inline-show" [title]="clientName"> Hi, {{clientName}} </span>
+                                </a>
+                                <ul  class="dropdown-menu " style="right:0px; left:auto" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li> <a class="dropdown-item" (click)="callLogout()" title="Logout"> Logout </a> </li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            </nav> -->
+            </div>
         </div>
-        <!-- <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </ul>
-          </div> -->
+    </nav> 
+    
+</div>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>

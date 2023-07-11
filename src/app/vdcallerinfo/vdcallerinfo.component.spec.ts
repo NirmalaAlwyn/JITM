@@ -6,10 +6,12 @@ describe('VdcallerinfoComponent', () => {
   let component: VdcallerinfoComponent;
   let fixture: ComponentFixture<VdcallerinfoComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [VdcallerinfoComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ VdcallerinfoComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(VdcallerinfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
