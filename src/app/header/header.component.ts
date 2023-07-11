@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit{
   ngOnInit() {
     this.userAccountId = 10;
     this.userAccountName =  "Door Shaba Nigam Limited";
+    this.clientName = "Nirmala Devi ";
   }
 
   callLogout() {

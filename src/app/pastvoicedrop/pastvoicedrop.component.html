@@ -1,1 +1,70 @@
-<p>pastvoicedrop works!</p>
+<div class="container-fluid bgcss" style="padding-left: 0px; padding-right: 0px;">
+    <div class = "row">
+        <app-header></app-header>
+    </div>
+    <div class = "row bgcss" >
+        <div class="col-sm-2">
+            <app-leftmenu></app-leftmenu>
+        </div>
+        <div class = "col-sm-10">
+            <div class = "row">
+                <h2 class="headingcss">  Past Voice Drop ({{NrOfPastVoicedrops}})</h2>
+            </div>
+            <div class = "row fontcss"> 
+                <div class="table-wrapper tablecss">
+                    <div class="table-responsive">
+                        <table id="myTable" class="datatables" style="border-color: whitesmoke;">
+                            <thead>
+                                <tr>
+                                <th>Ref Id</th>
+                                <th>Name</th>
+                                <th>Start Date</th>
+                                <th>Time</th>
+                                <th>DND</th>
+                                <th>Voice File</th>  
+                                <th>List</th>
+                                <th>List Size</th>
+                                <th>Message Duration</th>                        
+                                <th>Redial Count</th>
+                                <th>Client Name</th>                             
+                                <th>Report</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of pastvoicedrops;let i = index">
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.vdRefNo}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.vdName}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.startDate}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.startTime}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.dnd}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voiceFile}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.list}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.listSize}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.messageDuration}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.redialCount}}</a>
+                                    <td>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.clientName}}</a>
+                                    </td>
+                                    <td> 
+                                    <a *ngIf= 'item.reportAvailable == "1" '  (click)="downloadFile(item)" class ="reporticoncss"></a>
+                                    </td>                           
+                                </tr>                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>      
+</div>
+

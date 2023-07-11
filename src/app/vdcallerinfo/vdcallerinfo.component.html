@@ -1,1 +1,52 @@
-<p>vdcallerinfo works!</p>
+
+<div class="container-fluid bgcss" style="padding-left: 0px; padding-right: 0px;">
+    <div class = "row">
+        <app-header></app-header>
+    </div>
+    <div class = "row bgcss" >
+        <div class="col-sm-2">
+            <app-leftmenu></app-leftmenu>
+        </div>
+        <div class = "col-sm-10">
+            <div class = "row">
+                <h2 class="headingcss">  {{vdName}} - {{rrOfusers}} </h2>
+            </div>
+            <div class = "row fontcss"> 
+                <div class="table-wrapper tablecss">
+                    <div class="table-responsive">
+                        <table id="myTable1" class="datatables" style="border-color: whitesmoke;">
+                            <thead>
+                                <tr>
+                                <th>#</th>
+                                <th>In/Out</th>
+                                <th>User</th>
+                                <th>Agent</th>
+                                <th>Status</th>
+                                <th>Call Started</th>  
+                                <th>Call Ended</th>
+                                <th>Duration</th>
+                                <th>Action</th>                        
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of vduserDetails;let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{item.callType}}</td>
+                                    <td>{{item.userPhone}}</td>
+                                    <td>{{item.agentPhone}}</td>
+                                    <td>{{item.status}}</td>
+                                    <td>{{item.startDateTime}}</td>
+                                    <td>{{item.EndDateTime}}</td>
+                                    <td>{{item.duration}}</td>
+                                    <td>{{ActionImg}}</td>
+                                  </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>      
+</div>
+
