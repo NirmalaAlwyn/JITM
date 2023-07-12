@@ -38,7 +38,17 @@
                                     <td>{{item.startDateTime}}</td>
                                     <td>{{item.EndDateTime}}</td>
                                     <td>{{item.duration}}</td>
-                                    <td>{{ActionImg}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <a *ngIf = 'item.audioFileAvailability == "1"' class = "playiconcss" (click) = "playAudioFile(item)"></a>
+                                            </div>
+                                            <div class="col-sm">
+                                                <a *ngIf = 'item.audioFileAvailability == "1"' class = "downloadiconcss" (click) = "downloadAudioFile(item)"></a>
+                                            </div>
+                                        </div>
+                                        
+                                    </td>
                                   </tr>
                                 
                             </tbody>

@@ -35,6 +35,29 @@ tr:nth-child(even)
 thead tr:nth-child(odd) {
 	background:white ;
 }
+/* 
+.downloadiconcss {
+	
+	height: 24px;
+	background: url(../../assets/images/download-icon.png) no-repeat 15px center;
+    display: block;
+} */
 
+.playiconcss {
+    /* display: inline-block; */
+    display:block;
+	/* vertical-align: middle; */
+    height: 24px;
+    background: url(../../assets/images/pastvd.png) no-repeat;
+    /* margin-right: 12px; */
+}
+.downloadiconcss {
+    /* display: inline-block; */
+	/* vertical-align: right; */
+    display:block;
+    height: 24px;
+    background: url(../../assets/images/download-icon.png) no-repeat;
+    /* margin-right: 25px; */
+}
 
 

@@ -33,27 +33,27 @@
                             <tbody>
                                 <tr *ngFor="let item of pastvoicedrops;let i = index">
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.vdRefNo}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.booking_reference}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.vdName}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voicedrop_name}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.startDate}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.start_date}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.startTime}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.start_time}}</a>
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.dnd}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voiceFile}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voice_file}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.list}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.list_name}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.listSize}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.listsize}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.messageDuration}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.msgduration}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.redialCount}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.redial_count}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.clientName}}</a>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{clientName}}</a>
                                     </td>
                                     <td> 
                                     <a *ngIf= 'item.reportAvailable == "1" '  (click)="downloadFile(item)" class ="reporticoncss"></a>
