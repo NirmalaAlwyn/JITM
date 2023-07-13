@@ -41,7 +41,14 @@
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.start_time}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.dnd}}</a>
+                                        <div *ngIf="item.dnd == 1; else dialIn">
+                                            Yes
+                                        </div>
+                                      
+                                        <ng-template #dialIn>
+                                            No
+                                        </ng-template>
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)"></a>
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voice_file}}</a>
                                     <td>

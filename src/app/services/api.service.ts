@@ -22,6 +22,8 @@ export class ApiService {
   postAPIForAudioFile(requrl:any,inputData:any) : Observable<any> {
     const baseurl = 'http://localhost:3000/';
     const url = baseurl + requrl;
+    console.log('url' +url);
+    console.log('inputData' + JSON.stringify(inputData));
     return this.httpClient.post(url,inputData,{ responseType: 'arraybuffer', headers: new HttpHeaders({ 'Content-Type': 'audio/wav' }) })
   }
 }

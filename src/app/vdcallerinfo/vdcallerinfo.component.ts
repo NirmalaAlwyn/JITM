@@ -15,12 +15,14 @@ import 'datatables.net';
 export class VdcallerinfoComponent {
   selectedVoiceDropRefNo = window.sessionStorage.getItem("selectedBookingRef");
   
-  vdName : any;
+  vdName = window.sessionStorage.getItem("voicedrop_name");
+  audioURL: string | null = null;
   rrOfusers : any;
   vduserDetails : any;
   No : any;
   ActionImg : any;
   errorMessage : any;
+  duration = 10;
   signInClientData = {
     "maildId" : "",
     "accountId" : "",
@@ -39,8 +41,8 @@ export class VdcallerinfoComponent {
   }
 
   callerDetailsForAudioReq = {
-    "accountId" : "",
-    "clientId" : "",
+    "accountId" : window.sessionStorage.getItem("accountId"),
+    "clientId" : window.sessionStorage.getItem("clientId"),
     "vdRefNo" : "",
     "sessionId" : "",
     "audioFile" : ""
@@ -54,59 +56,59 @@ export class VdcallerinfoComponent {
 
   }
   ngOnInit(): void {
-    this.vdName = "SkyLink";
-    this.rrOfusers=20;
+    
+    // this.rrOfusers=20;
     this.No=0;
     this.ActionImg = "";
     this.vduserDetails=[];
-    this.vduserDetails.push(
-      {
-        "callType" :"1234",
-        "userPhone": "9677017716",
-        "agentPhone": "9791017716",
-        "status": "connected",
-        "startDateTime": "2020-10-21",
-        "EndDateTime": "2020-10-21",
-        "duration": "10:20",
-        "audioFileAvailability": "0",
-        "audioFile": ""
+    // this.vduserDetails.push(
+    //   {
+    //     "callType" :"1234",
+    //     "userPhone": "9677017716",
+    //     "agentPhone": "9791017716",
+    //     "status": "connected",
+    //     "startDateTime": "2020-10-21",
+    //     "EndDateTime": "2020-10-21",
+    //     "duration": "10:20",
+    //     "audioFileAvailability": "0",
+    //     "audioFile": ""
         
-      },
-      {
-        "callType" :"1234",
-        "userPhone": "9677017716",
-        "agentPhone": "9791017716",
-        "status": "connected",
-        "startDateTime": "2020-10-21",
-        "EndDateTime": "2020-10-21",
-        "duration": "10:20",
-        "audioFileAvailability": "1",
-        "audioFile": "nimmi.wav"       
-      },
-      {
-        "callType" :"1234",
-        "userPhone": "9677017716",
-        "agentPhone": "9791017716",
-        "status": "connected",
-        "startDateTime": "2020-10-21",
-        "EndDateTime": "2020-10-21",
-        "duration": "10:20",
-        "audioFileAvailability": "1",
-        "audioFile": "nimmi.wav"        
-      },
-      {
-        "callType" :"1234",
-        "userPhone": "9677017716",
-        "agentPhone": "9791017716",
-        "status": "connected",
-        "startDateTime": "2020-10-21",
-        "EndDateTime": "2020-10-21",
-        "duration": "10:20",
-        "audioFileAvailability": "1",
-        "audioFile": "nimmi.wav"        
-      }    
-    ); 
-
+    //   },
+    //   {
+    //     "callType" :"1234",
+    //     "userPhone": "9677017716",
+    //     "agentPhone": "9791017716",
+    //     "status": "connected",
+    //     "startDateTime": "2020-10-21",
+    //     "EndDateTime": "2020-10-21",
+    //     "duration": "10:20",
+    //     "audioFileAvailability": "1",
+    //     "audioFile": "nimmi.wav"       
+    //   },
+    //   {
+    //     "callType" :"1234",
+    //     "userPhone": "9677017716",
+    //     "agentPhone": "9791017716",
+    //     "status": "connected",
+    //     "startDateTime": "2020-10-21",
+    //     "EndDateTime": "2020-10-21",
+    //     "duration": "10:20",
+    //     "audioFileAvailability": "1",
+    //     "audioFile": "nimmi.wav"        
+    //   },
+    //   {
+    //     "callType" :"1234",
+    //     "userPhone": "9677017716",
+    //     "agentPhone": "9791017716",
+    //     "status": "connected",
+    //     "startDateTime": "2020-10-21",
+    //     "EndDateTime": "2020-10-21",
+    //     "duration": "10:20",
+    //     "audioFileAvailability": "1",
+    //     "audioFile": "nimmi.wav"        
+    //   }    
+    // ); 
+    // console.log(this.vduserDetails)
     var url = "vdcallerdetails"
     this.apiService.postAPI(url,this.selectedBookingRefDetails)
       .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -118,7 +120,9 @@ export class VdcallerinfoComponent {
       return of();
       }))
       .subscribe( responseData => {
-        this.vduserDetails = responseData['voicedropdetails'];
+        this.rrOfusers = responseData.NrofRecords;
+        this.vduserDetails = responseData['voicedropCallerInfo'];
+        console.log('vdcaller details :'+JSON.stringify(this.vduserDetails))
         // this.router.navigate(['/dashboard']);
       }
       ); 
@@ -137,6 +141,7 @@ export class VdcallerinfoComponent {
 
   playAudioFile(item:any) {
     console.log('Play Audio File')
+    this.callerDetailsForAudioReq.vdRefNo = item.vdrefno;
     var url = "audiofile"
     this.apiService.postAPIForAudioFile(url,this.callerDetailsForAudioReq)
       .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {
@@ -147,14 +152,17 @@ export class VdcallerinfoComponent {
       // that doesn't emit any values and completes
       return of();
       }))
-      .subscribe( responseAudioData => {
-        const audioData = responseAudioData;
+      .subscribe( response => {
+        const audioData = response;
         const audioBlob = new Blob([audioData], { type: 'audio/wav' });
-        const audioURL = URL.createObjectURL(audioBlob);
+        this.audioURL = URL.createObjectURL(audioBlob);
+        // const audioData = responseAudioData;
+        // const audioBlob = new Blob([audioData], { type: 'audio/wav' });
+        // const audioURL = URL.createObjectURL(audioBlob);
 
-        const audio = new Audio();
-        audio.src = audioURL;
-        audio.play();
+        // const audio = new Audio();
+        // audio.src = audioURL;
+        // audio.play();
       }
       ); 
   }

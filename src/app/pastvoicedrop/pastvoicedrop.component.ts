@@ -5,12 +5,27 @@ import { ApiService } from '../services/api.service';
 
 import * as $ from 'jquery';
 import 'datatables.net';
-
+export interface _pastvoicedrops {
+  vdRefNo: string
+  vdName: string
+  startDate: string
+  startTime: string
+  dnd: string
+  voiceFile: string
+  list: string
+  listSize: string
+  messageDuration: string
+  redialCount: string
+  clientName: string
+  reportAvailable: string
+  report: string
+}
 @Component({
   selector: 'app-pastvoicedrop',
   templateUrl: './pastvoicedrop.component.html',
   styleUrls: ['./pastvoicedrop.component.css']
 })
+
 export class PastvoicedropComponent implements OnInit {
   
   userAccountId = window.sessionStorage.getItem("accountId");
@@ -21,7 +36,7 @@ export class PastvoicedropComponent implements OnInit {
 
 
   NrOfPastVoicedrops : any;
-  pastvoicedrops : any;
+  pastvoicedrops: any[] = [];
   signInClientData = {
     "emailId" : window.sessionStorage.getItem("emailId"),
     "accountId" : window.sessionStorage.getItem("accountId"),
@@ -89,21 +104,21 @@ export class PastvoicedropComponent implements OnInit {
     //         "reportAvailable" : "0",
     //         "report" : ""
     //   },
-    //   {
-    //           "vdRefNo" :"1236",
-    //           "vdName": "ICICI",
-    //           "startDate": "12-07-2023",
-    //           "startTime": "11:10",
-    //           "dnd": "No",
-    //           "voiceFile": "Nirmala.wav",
-    //           "list": "Nimmi.xls",
-    //           "listSize": "100",
-    //           "messageDuration": "10:20",
-    //           "redialCount": "2",
-    //           "clientName" : "Nirmala",
-    //           "reportAvailable" : "1",
-    //           "report" : "12.wav"
-    //   }    
+      // {
+      //         "vdRefNo" :"1236",
+      //         "vdName": "ICICI",
+      //         "startDate": "12-07-2023",
+      //         "startTime": "11:10",
+      //         "dnd": "No",
+      //         "voiceFile": "Nirmala.wav",
+      //         "list": "Nimmi.xls",
+      //         "listSize": "100",
+      //         "messageDuration": "10:20",
+      //         "redialCount": "2",
+      //         "clientName" : "Nirmala",
+      //         "reportAvailable" : "1",
+      //         "report" : "12.wav"
+      // }    
     // ); 
 
     var url = "pastvoicedrops"
@@ -118,11 +133,14 @@ export class PastvoicedropComponent implements OnInit {
       }))
       .subscribe( responseData => {
         if(responseData.status === 'valid') {
-          console.log('Response Data :'+JSON.stringify(responseData));
           this.pastvoicedrops = responseData['voicedropInfo'];
+          // this.pastvoicedrops = [responseData as _pastvoicedrops];
           // console.log('vd data alone :' + responseData.voicedropInfo);
-          console.log('vd data alone :' +JSON.stringify(this.pastvoicedrops));
+          console.log('vd data alone :'+JSON.stringify(this.pastvoicedrops));  
           this.NrOfPastVoicedrops = responseData.NrofRecords;
+          // $(document).ready(() => {
+          //   $('#myTable').DataTable();
+          // });
           // this.router.navigate(['/dashboard']);
         }
         if(responseData.status === "inValid") {
@@ -132,6 +150,7 @@ export class PastvoicedropComponent implements OnInit {
           console.log('Error Code'+responseData.error);
           alert('Error while retriving past voice drop details ');
         }
+          console.log('Response Data :'+JSON.stringify(responseData));
       }
       );    
   
@@ -152,6 +171,7 @@ export class PastvoicedropComponent implements OnInit {
     console.log("Romw clicked " +item.booking_reference)
     const accountId = this.userAccountId;
     window.sessionStorage.setItem("selectedBookingRef",item.booking_reference);
+    window.sessionStorage.setItem("voicedrop_name",item.voicedrop_name);
 
     this.router.navigate(['/vdcallerinfo']);
   }

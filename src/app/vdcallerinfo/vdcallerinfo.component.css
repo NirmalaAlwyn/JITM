@@ -47,15 +47,15 @@ thead tr:nth-child(odd) {
     /* display: inline-block; */
     display:block;
 	/* vertical-align: middle; */
-    height: 24px;
-    background: url(../../assets/images/pastvd.png) no-repeat;
+    height: 29px;
+    background: url(../../assets/images/playicon.png) no-repeat;
     /* margin-right: 12px; */
 }
 .downloadiconcss {
     /* display: inline-block; */
 	/* vertical-align: right; */
     display:block;
-    height: 24px;
+    height: 29px;
     background: url(../../assets/images/download-icon.png) no-repeat;
     /* margin-right: 25px; */
 }

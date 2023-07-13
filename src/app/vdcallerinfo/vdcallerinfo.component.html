@@ -9,7 +9,17 @@
         </div>
         <div class = "col-sm-10">
             <div class = "row">
-                <h2 class="headingcss">  {{vdName}} - {{rrOfusers}} </h2>
+                <div class="col">
+                    <h2 class="headingcss">  {{vdName}} - {{rrOfusers}} </h2>
+                </div>
+                <div class = "col" >
+                    <div style="float:right; margin-top: 1vh;">
+                        <audio controls autoplay *ngIf="audioURL">
+                            <source [src]="audioURL" type="audio/wav">
+                        </audio>
+                        <!-- <button class="close-button" (click)="closeAudio()">&#10006;</button> -->
+                    </div>
+                </div>
             </div>
             <div class = "row fontcss"> 
                 <div class="table-wrapper tablecss">
@@ -31,21 +41,41 @@
                             <tbody>
                                 <tr *ngFor="let item of vduserDetails;let i = index">
                                     <td>{{i + 1}}</td>
-                                    <td>{{item.callType}}</td>
-                                    <td>{{item.userPhone}}</td>
-                                    <td>{{item.agentPhone}}</td>
-                                    <td>{{item.status}}</td>
-                                    <td>{{item.startDateTime}}</td>
-                                    <td>{{item.EndDateTime}}</td>
-                                    <td>{{item.duration}}</td>
+                                    <td>                               
+                                        <div *ngIf="item.calltype == 1; else dialIn">
+                                            Out
+                                        </div>
+                                      
+                                        <ng-template #dialIn>
+                                            In
+                                        </ng-template>
+                                    </td>
+
+                                    <td>{{item.phoneno}}</td>
+                                    <td>{{item.connectedcustcarephone}}</td>
+                                    <td>
+                                        <div *ngIf='item.connectedcustcarephone == "" ; else connetedwithAgent'>
+                                            Not Connected
+                                        </div>
+                                      
+                                        <ng-template #connetedwithAgent>
+                                            Connected
+                                        </ng-template>
+                                    </td>
+                                    <td>{{item.callstartdatetime}}</td>
+                                    <td>{{item.disconnectdatetime}}</td>
+                                    <td>{{duration}}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-sm">
-                                                <a *ngIf = 'item.audioFileAvailability == "1"' class = "playiconcss" (click) = "playAudioFile(item)"></a>
+                                                <!-- <a *ngIf = 'item.audioFileAvailability == "1"' class = "playiconcss" (click) = "playAudioFile(item)"></a> -->
+                                                <a *ngIf = 'item.connectedcustcarephone != ""' class = "playiconcss" (click) = "playAudioFile(item)"></a>
+
                                             </div>
-                                            <div class="col-sm">
-                                                <a *ngIf = 'item.audioFileAvailability == "1"' class = "downloadiconcss" (click) = "downloadAudioFile(item)"></a>
-                                            </div>
+                                            
+                                            <!-- <div class="col-sm">
+                                                <a *ngIf = 'item.connectedcustcarephone != ""' class = "downloadiconcss" (click) = "downloadAudioFile(item)"></a>
+                                            </div> -->
                                         </div>
                                         
                                     </td>
@@ -59,4 +89,5 @@
         </div> 
     </div>      
 </div>
+
 
