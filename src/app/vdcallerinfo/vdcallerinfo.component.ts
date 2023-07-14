@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges,OnInit,DoCheck ,AfterViewChecked,AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable,catchError,of } from 'rxjs';
 import { ApiService } from '../services/api.service';
@@ -6,13 +6,15 @@ import { ApiService } from '../services/api.service';
 import * as $ from 'jquery';
 import 'datatables.net';
 
+import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-vdcallerinfo',
   templateUrl: './vdcallerinfo.component.html',
   styleUrls: ['./vdcallerinfo.component.css']
 })
-export class VdcallerinfoComponent {
+export class VdcallerinfoComponent implements OnInit  {
   selectedVoiceDropRefNo = window.sessionStorage.getItem("selectedBookingRef");
   
   vdName = window.sessionStorage.getItem("voicedrop_name");
@@ -22,7 +24,7 @@ export class VdcallerinfoComponent {
   No : any;
   ActionImg : any;
   errorMessage : any;
-  duration = 10;
+  duration = "";
   signInClientData = {
     "maildId" : "",
     "accountId" : "",
@@ -45,9 +47,11 @@ export class VdcallerinfoComponent {
     "clientId" : window.sessionStorage.getItem("clientId"),
     "vdRefNo" : "",
     "sessionId" : "",
-    "audioFile" : ""
+    "audioFile" : "",
+    
   }
-  
+
+  dtTrigger: Subject<any> = new Subject()
 
   constructor(
     public router: Router,
@@ -123,17 +127,23 @@ export class VdcallerinfoComponent {
         this.rrOfusers = responseData.NrofRecords;
         this.vduserDetails = responseData['voicedropCallerInfo'];
         console.log('vdcaller details :'+JSON.stringify(this.vduserDetails))
+        $(document).ready(() => {
+          $('#myTable1').DataTable();
+        });
+        // DataTables.Api.ajax.reload(); 
+        // this.dtTrigger.next();
         // this.router.navigate(['/dashboard']);
       }
       ); 
   
   }
 
-  ngAfterViewInit() {
-    $(document).ready(() => {
-      $('#myTable1').DataTable();
-    });
-  }
+  //  ngAfterViewInit() {
+  //   ngAfterViewInit() {
+  //   $(document).ready(() => {
+  //     $('#myTable1').DataTable();
+  //   });
+  // }
 
   downloadAudioFile(item:any) {
     console.log('Download Audio file clicked')
@@ -142,6 +152,8 @@ export class VdcallerinfoComponent {
   playAudioFile(item:any) {
     console.log('Play Audio File')
     this.callerDetailsForAudioReq.vdRefNo = item.vdrefno;
+    this.callerDetailsForAudioReq.audioFile = item.phoneno
+    console.log(JSON.stringify(this.callerDetailsForAudioReq));
     var url = "audiofile"
     this.apiService.postAPIForAudioFile(url,this.callerDetailsForAudioReq)
       .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {

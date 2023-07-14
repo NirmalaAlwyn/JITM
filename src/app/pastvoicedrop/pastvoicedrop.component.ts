@@ -5,21 +5,21 @@ import { ApiService } from '../services/api.service';
 
 import * as $ from 'jquery';
 import 'datatables.net';
-export interface _pastvoicedrops {
-  vdRefNo: string
-  vdName: string
-  startDate: string
-  startTime: string
-  dnd: string
-  voiceFile: string
-  list: string
-  listSize: string
-  messageDuration: string
-  redialCount: string
-  clientName: string
-  reportAvailable: string
-  report: string
-}
+// export interface _pastvoicedrops {
+//   vdRefNo: string
+//   vdName: string
+//   startDate: string
+//   startTime: string
+//   dnd: string
+//   voiceFile: string
+//   list: string
+//   listSize: string
+//   messageDuration: string
+//   redialCount: string
+//   clientName: string
+//   reportAvailable: string
+//   report: string
+// }
 @Component({
   selector: 'app-pastvoicedrop',
   templateUrl: './pastvoicedrop.component.html',
@@ -138,10 +138,9 @@ export class PastvoicedropComponent implements OnInit {
           // console.log('vd data alone :' + responseData.voicedropInfo);
           console.log('vd data alone :'+JSON.stringify(this.pastvoicedrops));  
           this.NrOfPastVoicedrops = responseData.NrofRecords;
-          // $(document).ready(() => {
-          //   $('#myTable').DataTable();
-          // });
-          // this.router.navigate(['/dashboard']);
+          $(document).ready(() => {
+            $('#myTable').DataTable();
+          });
         }
         if(responseData.status === "inValid") {
           alert('Invalid Credentials');
@@ -156,11 +155,11 @@ export class PastvoicedropComponent implements OnInit {
   
   }
 
-  ngAfterViewInit() {
-    $(document).ready(() => {
-      $('#myTable').DataTable();
-    });
-  }
+  // ngAfterViewInit() {
+  //   $(document).ready(() => {
+  //     $('#myTable').DataTable();
+  //   });
+  // }
   
 
   downloadFile(item : any) {

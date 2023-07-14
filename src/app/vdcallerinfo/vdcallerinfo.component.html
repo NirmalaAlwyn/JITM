@@ -24,7 +24,7 @@
             <div class = "row fontcss"> 
                 <div class="table-wrapper tablecss">
                     <div class="table-responsive">
-                        <table id="myTable1" class="datatables" style="border-color: whitesmoke;">
+                        <table id="myTable1" class="datatables" style="border-color: whitesmoke;" >
                             <thead>
                                 <tr>
                                 <th>#</th>
@@ -62,8 +62,8 @@
                                             Connected
                                         </ng-template>
                                     </td>
-                                    <td>{{item.callstartdatetime}}</td>
-                                    <td>{{item.disconnectdatetime}}</td>
+                                    <td>{{item.callstartdate}} {{item.callstarttime}}</td>
+                                    <td>{{item.disconnectdate}} {{item.disconnecttime}}</td>
                                     <td>{{duration}}</td>
                                     <td>
                                         <div class="row">

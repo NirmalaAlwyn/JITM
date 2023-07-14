@@ -53,12 +53,16 @@
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.voice_file}}</a>
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.list_name}}</a>
-                                    <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.listsize}}</a>
+                                    <td>                                        
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.listsize == 0 ? "" : item.listsize }} </a>
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.msgduration}}</a>
                                     <td>
-                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{item.redial_count}}</a>
+                                        <div *ngIf="item.redial_count != -1;">
+                                            {{item.redial_count}}
+                                        </div>                                      
+                                        
+                                        <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)"></a>
                                     <td>
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{clientName}}</a>
                                     </td>

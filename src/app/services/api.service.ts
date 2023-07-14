@@ -21,9 +21,17 @@ export class ApiService {
 
   postAPIForAudioFile(requrl:any,inputData:any) : Observable<any> {
     const baseurl = 'http://localhost:3000/';
+    const headers = { 'Content-Type': 'audio/wav',responseType: 'arraybuffer' };
+    // const headers = { 'Content-Type': 'application/json', 'My-Custom-Header': 'foobar'};
     const url = baseurl + requrl;
     console.log('url' +url);
     console.log('inputData' + JSON.stringify(inputData));
-    return this.httpClient.post(url,inputData,{ responseType: 'arraybuffer', headers: new HttpHeaders({ 'Content-Type': 'audio/wav' }) })
+    // return this.httpClient.post(url,inputData,{headers});
+    //Working
+    // return this.httpClient.post(url,inputData,{ responseType: 'arraybuffer', headers: new HttpHeaders({ 'Content-Type': 'audio/wav' }) })
+
+    return this.httpClient.post(url,inputData,{ responseType: 'arraybuffer', headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+    
+
   }
 }
