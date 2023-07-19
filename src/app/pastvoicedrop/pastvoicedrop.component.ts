@@ -2,6 +2,7 @@ import { Component,OnInit,AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable,catchError,of } from 'rxjs';
 import { ApiService } from '../services/api.service';
+import { saveAs } from 'file-saver';
 
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -45,7 +46,13 @@ export class PastvoicedropComponent implements OnInit {
   }
   errorMessage : any;
 
-
+  vddetailsForFileDownload = {
+    "accountId" : window.sessionStorage.getItem("accountId"),
+    "clientId" : window.sessionStorage.getItem("clientId"),
+    "sessionId" : "",
+    "report_filename" : "",
+    "BookingRefNo" : ""
+  }
  
   constructor(
     public router: Router,
@@ -121,11 +128,12 @@ export class PastvoicedropComponent implements OnInit {
       // }    
     // ); 
 
-    var url = "pastvoicedrops"
+    // var url = "pastvoicedrops"
+    var url = this.apiService.apiUrl.pastvoicedropsReq;
     this.apiService.postAPI(url,this.signInClientData)
       .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {
       this.errorMessage = error.message;
-      console.error('There was an error!', error);
+      console.error('There was an error!', this.errorMessage);
 
       // after handling error, return a new observable 
       // that doesn't emit any values and completes
@@ -141,9 +149,6 @@ export class PastvoicedropComponent implements OnInit {
           $(document).ready(() => {
             $('#myTable').DataTable();
           });
-        }
-        if(responseData.status === "inValid") {
-          alert('Invalid Credentials');
         }
         else if (responseData.status === "Error") {
           console.log('Error Code'+responseData.error);
@@ -163,7 +168,29 @@ export class PastvoicedropComponent implements OnInit {
   
 
   downloadFile(item : any) {
-    console.log(item.report);
+    console.log(item.report_file);
+    this.vddetailsForFileDownload.report_filename = item.report_file;
+    this.vddetailsForFileDownload.BookingRefNo = item.booking_reference;
+    // var url = "filedownload"
+    var url = this.apiService.apiUrl.filedownloadReq;
+    this.apiService.postAPIforFileDownload(url,this.vddetailsForFileDownload)
+      .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+        alert(' File not available, Plz try again later');
+        // after handling error, return a new observable 
+        // that doesn't emit any values and completes
+        return of();
+      }))
+      .subscribe( response => {
+        console.log('response received :'+JSON.stringify(response));
+        let downloadURL = window.URL.createObjectURL(response);
+        saveAs(downloadURL,item.booking_reference);   
+        
+        console.log('End of the response')
+        
+      }
+      ); 
   }
 
   voicedropcallerdetails(item:any) {

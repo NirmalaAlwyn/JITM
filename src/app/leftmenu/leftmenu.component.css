@@ -3,6 +3,8 @@
     width: 100%;
     height : 100%;
     padding-left: 0px;
+    padding-right: 0px;
+
 }
 .fontcss {
     font-family: sans-serif; 
@@ -17,7 +19,7 @@
 .navcss {
     padding-top: var(--bs-navbar-brand-padding-y);
     padding-bottom: var(--bs-navbar-brand-padding-y);
-    margin-right: var(--bs-navbar-brand-margin-end);
+    /* margin-right: var(--bs-navbar-brand-margin-end); */
     font-size: var(--bs-navbar-brand-font-size);
     color: var(--bs-navbar-brand-color);
     text-decoration: none;
@@ -26,6 +28,7 @@
     font-size: 14px;  
     width: 100%;
     padding-left: 15px;
+    margin-right:0px;
 }
 
 .active {

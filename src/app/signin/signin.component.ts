@@ -67,7 +67,8 @@ export class SigninComponent implements OnInit{
       this.signInFormData.emailId = this.reactiveSinginForm.get('username')?.value;
       this.signInFormData.pasWord = this.reactiveSinginForm.get('password')?.value
       console.log(this.signInFormData);
-      var loginurl = "signin"
+      // var loginurl = "signin"
+      var loginurl = this.apiService.apiUrl.signinReq;
       this.apiService.postAPI(loginurl,this.signInFormData)
         .pipe(catchError((error: any, caught: Observable<any>): Observable<any> => {
         this.errorMessage = error.message;

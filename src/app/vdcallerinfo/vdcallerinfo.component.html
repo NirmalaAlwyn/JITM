@@ -13,12 +13,12 @@
                     <h2 class="headingcss">  {{vdName}} - {{rrOfusers}} </h2>
                 </div>
                 <div class = "col" >
-                    <div style="float:right; margin-top: 1vh;">
+                    <!-- <div style="float:right; margin-top: 1vh;">
                         <audio controls autoplay *ngIf="audioURL">
                             <source [src]="audioURL" type="audio/wav">
                         </audio>
-                        <!-- <button class="close-button" (click)="closeAudio()">&#10006;</button> -->
-                    </div>
+                        <! -- <button class="close-button" (click)="closeAudio()">&#10006;</button> -- >
+                    </div> -->
                 </div>
             </div>
             <div class = "row fontcss"> 
@@ -31,16 +31,16 @@
                                 <th>In/Out</th>
                                 <th>User</th>
                                 <th>Agent</th>
-                                <th>Status</th>
+                                <th>Agent Connect Status</th>
                                 <th>Call Started</th>  
                                 <th>Call Ended</th>
-                                <th>Duration</th>
+                                <!-- <th>Duration</th> -->
                                 <th>Action</th>                        
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of vduserDetails;let i = index">
-                                    <td>{{i + 1}}</td>
+                                    <td>{{item.serialNo}}</td>
                                     <td>                               
                                         <div *ngIf="item.calltype == 1; else dialIn">
                                             Out
@@ -64,13 +64,18 @@
                                     </td>
                                     <td>{{item.callstartdate}} {{item.callstarttime}}</td>
                                     <td>{{item.disconnectdate}} {{item.disconnecttime}}</td>
-                                    <td>{{duration}}</td>
+                                    <!-- <td>{{duration}}</td> -->
                                     <td>
                                         <div class="row">
                                             <div class="col-sm">
                                                 <!-- <a *ngIf = 'item.audioFileAvailability == "1"' class = "playiconcss" (click) = "playAudioFile(item)"></a> -->
-                                                <a *ngIf = 'item.connectedcustcarephone != ""' class = "playiconcss" (click) = "playAudioFile(item)"></a>
+                                                <a *ngIf = 'item.connectedcustcarephone != "" && item.audioURL == null' class = "playiconcss" (click) = "playAudioFile(item)"></a>
 
+                                            </div>
+                                            <div style="float:right; margin-top: 1vh;">
+                                                <audio controls autoplay *ngIf="item.audioURL">
+                                                    <source [src]="item.audioURL" type="audio/wav">
+                                                </audio>
                                             </div>
                                             
                                             <!-- <div class="col-sm">

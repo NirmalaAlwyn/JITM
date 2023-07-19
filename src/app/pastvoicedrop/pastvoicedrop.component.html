@@ -67,7 +67,7 @@
                                         <a href="javascript:void(0)" style="text-decoration: none; color: black;"  (click)="voicedropcallerdetails(item)">{{clientName}}</a>
                                     </td>
                                     <td> 
-                                    <a *ngIf= 'item.reportAvailable == "1" '  (click)="downloadFile(item)" class ="reporticoncss"></a>
+                                    <a *ngIf= 'item.report_file != "" '  (click)="downloadFile(item)" class ="reporticoncss"></a>
                                     </td>                           
                                 </tr>                                
                             </tbody>

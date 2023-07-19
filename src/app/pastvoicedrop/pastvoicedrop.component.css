@@ -37,7 +37,7 @@ thead tr:nth-child(odd) {
 }
 
 .reporticoncss {
-	/* width: 21px;  */
+	/* width: 50px;  */
 	height: 24px;
 	background: url(../../assets/images/download-icon.png) no-repeat 15px center;
     display: block;
